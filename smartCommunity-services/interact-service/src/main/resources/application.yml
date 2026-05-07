@@ -1,0 +1,12 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: interact-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        # namespace 不写，默认 public
+        ip: localhost

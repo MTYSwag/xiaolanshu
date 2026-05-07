@@ -1,0 +1,3 @@
+jwt:
+  secret: smartCommunity-secret-key-123456789-abcdefghijklmn
+  expiration: 86400000

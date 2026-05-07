@@ -1,0 +1,88 @@
+server:
+  port: 8080
+
+# 您的gateway-service模块的application.yml文件中缺少JWT配置
+#JwtUtils类需要从配置文件中读取jwt.secret和jwt.expiration属性
+#虽然common-security模块有自己的配置文件，但只有主应用的配置文件会被Spring Boot自动加载
+jwt:
+  secret: smartCommunity-secret-key-123456789-abcdefghijklmn
+  expiration: 86400000
+
+spring:
+  application:
+    name: gateway
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        ip: localhost
+
+    gateway:
+      # 开启 Sentinel 网关适配
+      enabled: true
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - StripPrefix=1   # 在转发前，去掉路径里的第一段（也就是 /api）
+        - id: content-service
+          uri: lb://content-service
+          predicates:
+            - Path=/api/content/**
+          filters:
+            - StripPrefix=1   # 在转发前，去掉路径里的第一段（也就是 /api）
+        - id: interact-service
+          uri: lb://interact-service
+          predicates:
+            - Path=/api/interact/**
+          filters:
+            - StripPrefix=1   # 在转发前，去掉路径里的第一段（也就是 /api）
+        - id: file-service
+          uri: lb://file-service
+          predicates:
+            - Path=/api/file/**
+          filters:
+            - StripPrefix=1   # 在转发前，去掉路径里的第一段（也就是 /api）
+        - id: search-service
+          uri: lb://search-service
+          predicates:
+            - Path=/api/search/**
+          filters:
+            - StripPrefix=1   # 在转发前，去掉路径里的第一段（也就是 /api）
+        - id: shop-service
+          uri: lb://shop-service
+          predicates:
+            - Path=/api/shop/**
+          filters:
+            - StripPrefix=1   # 在转发前，去掉路径里的第一段（也就是 /api）
+        - id: ai-service
+          uri: lb://ai-service
+          predicates:
+            - Path=/api/ai/**
+          filters:
+            - StripPrefix=1   # 在转发前，去掉路径里的第一段（也就是 /api）
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOriginPatterns: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+            maxAge: 3600
+
+    sentinel:
+      filter:
+        enabled: true
+      eager: true
+      transport:
+        dashboard: localhost:8858
+        port: 8719
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+

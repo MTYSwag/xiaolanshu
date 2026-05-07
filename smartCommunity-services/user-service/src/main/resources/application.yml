@@ -1,0 +1,20 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: user-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        # namespace 不写，默认 public
+        ip: localhost
+
+
+
+
+
+jwt:
+  secret: smartCommunity-secret-key-123456789-abcdefghijklmn
+  expiration: 86400000
