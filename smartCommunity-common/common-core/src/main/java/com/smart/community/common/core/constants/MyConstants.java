@@ -11,6 +11,10 @@ public class MyConstants {
      */
     public static final String JWT_BLACKLIST = "jwt:blacklist:";
 
+    /**
+     * 未找到JWT令牌
+     */
+    public static final String JWT_NOT_FOUND = "JWT令牌未找到";
 
 
 }

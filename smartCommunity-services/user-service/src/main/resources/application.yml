@@ -4,6 +4,13 @@ server:
 spring:
   application:
     name: user-service
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/xiaolanshu?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8
+    username: root
+    password: root123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # Nacos 配置中心（必须加！！！用于拉取 Sentinel 规则）
   cloud:
     nacos:
       discovery:
@@ -11,10 +18,15 @@ spring:
         # namespace 不写，默认 public
         ip: localhost
 
+# Mybatis-Plus 配置
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: assign_id  # 雪花算法ID
+  configuration:
+    map-underscore-to-camel-case: true  # 驼峰转换
 
-
-
-
+# JWT 配置(用于用户认证和授权)
 jwt:
   secret: smartCommunity-secret-key-123456789-abcdefghijklmn
   expiration: 86400000

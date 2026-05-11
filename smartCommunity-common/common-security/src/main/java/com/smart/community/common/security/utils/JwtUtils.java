@@ -1,5 +1,6 @@
 package com.smart.community.common.security.utils;
 
+import com.smart.community.common.core.constants.user.UserConstants;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,7 +43,7 @@ public class JwtUtils {
      * 生成带用户ID的token（简化版）
      */
     public String generateToken(String userId) {
-        return generateToken(Map.of("userId", userId));
+        return generateToken(Map.of(UserConstants.USER_ID, userId));
     }
 
     /**
@@ -60,7 +61,7 @@ public class JwtUtils {
      * 从token中获取userId
      */
     public String getUserIdFromToken(String token) {
-        return parseToken(token).get("userId", String.class);
+        return parseToken(token).get(UserConstants.USER_ID, String.class);
     }
 
     /**

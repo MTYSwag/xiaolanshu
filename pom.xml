@@ -34,8 +34,9 @@
         <spring-cloud-alibaba.version>2023.0.1.0</spring-cloud-alibaba.version>
 
         <!-- Middleware Version -->
-        <mysql.version>8.4.3</mysql.version>
+        <mysql.version>8.0.33</mysql.version>
         <mybatis-plus.version>3.5.5</mybatis-plus.version>
+        <spring-doc-openapi.version>2.6.0</spring-doc-openapi.version>
         <redis.version>7.4.1</redis.version>
         <kafka.version>3.8.0</kafka.version>
         <rabbitmq.version>3.13.7</rabbitmq.version>
@@ -82,6 +83,12 @@
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
+            </dependency>
+            <!-- SpringDoc OpenAPI 3 (Swagger) -->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${spring-doc-openapi.version}</version>
             </dependency>
             <!-- MinIO Client -->
             <dependency>
