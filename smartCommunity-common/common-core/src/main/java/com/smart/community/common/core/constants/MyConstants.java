@@ -16,5 +16,8 @@ public class MyConstants {
      */
     public static final String JWT_NOT_FOUND = "JWT令牌未找到";
 
-
+    /**
+     * 400 错误码 , 表示客户端请求参数错误
+     */
+    public static final int ERROR_CODE_400 = 400;
 }

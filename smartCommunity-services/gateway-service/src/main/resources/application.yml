@@ -31,7 +31,7 @@ spring:
         - id: content-service
           uri: lb://content-service
           predicates:
-            - Path=/api/content/**
+            - Path=/api/content/** , /api/topic/**
           filters:
             - StripPrefix=1   # 在转发前，去掉路径里的第一段（也就是 /api）
         - id: interact-service
