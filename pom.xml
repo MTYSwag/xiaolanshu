@@ -13,6 +13,7 @@
     <modules>
         <module>smartCommunity-common</module>
         <module>smartCommunity-services</module>
+        <module>smartCommunity-component</module>
     </modules>
 
     <parent>

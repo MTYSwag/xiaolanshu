@@ -4,9 +4,24 @@ server:
 spring:
   application:
     name: file-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/xiaolanshu?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8
+    username: root
+    password: root123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     nacos:
       discovery:
         server-addr: localhost:8848
-        # namespace 不写，默认 public
         ip: localhost
+  servlet:
+    multipart: # 多文件上传配置
+      max-file-size: 10MB # 最大文件大小
+      max-request-size: 20MB # 最大请求大小
+
+# MinIO 配置
+minio:
+  endpoint: http://localhost:9000
+  access-key: minioadmin
+  secret-key: minioadmin
+  bucket-name: xiaolanshu   # 存储桶名称

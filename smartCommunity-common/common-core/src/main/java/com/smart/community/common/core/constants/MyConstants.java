@@ -20,4 +20,20 @@ public class MyConstants {
      * 400 错误码 , 表示客户端请求参数错误
      */
     public static final int ERROR_CODE_400 = 400;
+
+    /**
+     * 操作过于频繁，请稍后重试
+     */
+    public static final String FREQUENT_ERROR_MSG = "操作过于频繁，请稍后重试";
+
+    /**
+     * 取消点赞
+     */
+    public static final String LIKE_CANCEL_MSG = "取消点赞";
+
+    /**
+     * 点赞成功
+     */
+    public static final String LIKE_SUCCESS_MSG = "点赞成功";
+
 }

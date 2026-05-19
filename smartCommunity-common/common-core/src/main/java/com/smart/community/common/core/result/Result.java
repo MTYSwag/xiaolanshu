@@ -21,6 +21,11 @@ public class Result<T> {
         return success(null);
     }
 
+    public static <T> Result<T> success(T data, String msg) {
+        return new Result<>(200, msg, data);
+    }
+
+
     // 失败静态方法
     public static <T> Result<T> fail(int code, String message) {
         return new Result<>(code, message, null);

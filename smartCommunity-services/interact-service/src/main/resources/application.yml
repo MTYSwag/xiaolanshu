@@ -8,5 +8,15 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
-        # namespace 不写，默认 public
         ip: localhost
+  datasource:
+    url: jdbc:mysql://localhost:3306/xiaolanshu?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root123456
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    # 消费者配置已拆分至各 Kafka 消费者独立配置类
+    # 见 LikeKafkaConsumerConfig / FavoriteKafkaConsumerConfig
