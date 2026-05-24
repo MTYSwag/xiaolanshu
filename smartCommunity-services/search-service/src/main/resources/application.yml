@@ -8,5 +8,16 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
-        # namespace 不写，默认 public
         ip: localhost
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: search-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer  # 键反序列化器
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer  # 值反序列化器
+      properties:
+        spring.json.trusted.packages: "*" # 允许所有包
+  elasticsearch:
+    uris: http://localhost:9200
+    connection-timeout: 5s # 连接超时时间
+    socket-timeout: 10s # 套接字超时时间

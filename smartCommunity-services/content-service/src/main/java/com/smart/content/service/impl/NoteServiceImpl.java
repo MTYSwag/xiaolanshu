@@ -16,6 +16,7 @@ import com.smart.content.domain.vo.NoteVO;
 import com.smart.content.entity.*;
 import com.smart.content.mapper.*;
 import com.smart.content.service.NoteService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -63,6 +64,7 @@ public class NoteServiceImpl implements NoteService {
      * @return 笔记ID
      */
     @Transactional(rollbackFor = Exception.class)
+    @GlobalTransactional(name = "publish-note",rollbackFor = Exception.class)
     public Long publishNote(Long userId, PublishContentDTO form) {
 
         String title = form.getTitle(); // 笔记标题

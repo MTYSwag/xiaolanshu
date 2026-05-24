@@ -1,28 +1,24 @@
-package com.smart.content.domain.dto;
-
+package com.smart.search.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * 发送到 Kafka 的数据结构
+ * 笔记事件DTO
  */
-
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class NoteEventDTO {
 
     @Schema(description = "笔记ID")
     private Long noteId;
 
-    @Schema(description = "笔记发布者的用户id")
+    @Schema(description = "用户ID")
     private Long userId;
 
     @Schema(description = "笔记标题")
@@ -31,13 +27,13 @@ public class NoteEventDTO {
     @Schema(description = "笔记内容")
     private String content;
 
-    @Schema(description = "所发布笔记的图片列表")
+    @Schema(description = "图片URL列表")
     private List<String> imageUrls;
 
-    @Schema(description = "笔记所属话题列表")
+    @Schema(description = "话题列表")
     private List<String> topics;
 
-    @Schema(description = "笔记发布（创建）时间")
+    @Schema(description = "创建时间")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
 }
