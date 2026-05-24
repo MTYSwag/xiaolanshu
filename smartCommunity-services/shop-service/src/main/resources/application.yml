@@ -8,5 +8,53 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
-        # namespace 不写，默认 public
         ip: localhost
+  datasource:
+    url: jdbc:mysql://localhost:3306/xiaolanshu?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 4
+          min-idle: 2
+      timeout: 5000ms
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
+
+seata:
+  tx-service-group: my_test_tx_group
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default
+    grouplist:
+      default: localhost:8091
+  config:
+    type: file
+  registry:
+    type: file
+  client:
+    tm:
+      default-global-transaction-timeout: 180000
+    rm:
+      report-retry-count: 5
+      async-commit-buffer-limit: 10000
+
+
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 记录日志
+  global-config:
+    db-config:
+      id-type: assign_id
